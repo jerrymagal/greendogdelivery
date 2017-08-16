@@ -10,7 +10,7 @@
 			<div class="well">
 				<form id="clienteForm" action="#" th:action="@{/clientes/(form)}" th:object="${cliente}" method="post" class="form-horizontal">
 					<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
-						<p th:each="error : ${#fields.errors('*')}" th:text="$(error)">Erro de validação</p>
+						<p th:each="error : ${#fields.errors('*')}" th:text="${error}">Erro de validação</p>
 					</div>
 					
 					<input type="hidden" th:field="*{id}" th:class="${#fields.hasErrors('id')} ? 'field-error'"/>
@@ -22,10 +22,13 @@
 						<label class="control-label col-sm-2">Endere&ccedil;o</label>
 						<textarea class="col-sm-10" th:field="*{endereco}" th:class="${#fields.hasErrors('endereco')} ? 'field-error'"></textarea>
 					</div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" value="Gravar"/>
+					</div>
+					<br />
+					<a href="list.html" th:href="@{/clientes/}">Voltar</a>
 				</form>
-			
 			</div>
-
 		</div>
 	</body>
 </html>
